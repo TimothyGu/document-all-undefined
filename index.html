@@ -16,27 +16,58 @@
       }
     }
     
+    // Spec:   OK, null
+    // Chrome: OK, undefined
+    // Edge:   OK, undefined
+    // FF:     Throws
+    // Safari: OK, undefined
     test("document.all()", "OK, null", function () {
       return document.all();
     });
+    
+    // Spec:   OK, null
+    // Chrome: OK, undefined
+    // Edge:   OK, undefined
+    // FF:     Throws
+    // Safari: OK, undefined
     test("document.all.item()", "OK, null", function () {
       return document.all.item();
     });
+    
+    // Spec:   OK, null
+    // Chrome: OK, <div id=undefined>
+    // Edge:   OK, <div id=undefined>
+    // FF:     OK, <div id=undefined>
+    // Safari: OK, undefined
     test("document.all(undefined)", "OK, null", function () {
       return document.all(undefined);
     });
+    
+    // Spec:   OK, null
+    // Chrome: OK, <div id=undefined>
+    // Edge:   OK, <div id=undefined>
+    // FF:     OK, <div id=undefined>
+    // Safari: OK, undefined
     test("document.all.item(undefined)", "OK, null", function () {
       return document.all.item(undefined);
     });
+    
+    // All: OK, <div id=undefined>
     test("document.all(\"undefined\")", "OK, <div id=undefined>", function () {
       return document.all("undefined");
     });
+    
+    // All: OK, <div id=undefined>
     test("document.all.item(\"undefined\")", "OK, <div id=undefined>", function () {
       return document.all.item("undefined");
     });
+    
+    // All: OK, <div id=undefined>
     test("Function.prototype.call.call(document.all, undefined, \"undefined\")", "OK, <div id=undefined>", function () {
       return Function.prototype.call.call(document.all, undefined, "undefined");
     });
+    
+    // All: ERROR
     test("Function.prototype.call.call(document.all.item, undefined, \"undefined\")", "ERROR", function () {
       return Function.prototype.call.call(document.all.item, undefined, "undefined");
     });
