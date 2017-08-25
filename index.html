@@ -1,0 +1,38 @@
+<div id="undefined"></div>
+
+<script>
+  (function () {
+    "use strict";
+    function test(name, expected, cb) {
+      console.log('TESTING: ' + name);
+      console.log('EXPECTED: ' + expected);
+      try {
+        var ret = cb();
+        console.log('OK');
+        console.log(ret);
+      } catch (err) {
+        console.log('ERROR');
+        console.log(err);
+      }
+    }
+    
+    test("document.all()", "OK, null", function () {
+      return document.all();
+    });
+    test("document.all.item()", "OK, null", function () {
+      return document.all.item();
+    });
+    test("document.all(undefined)", "OK, <div id=undefined>", function () {
+      return document.all(undefined);
+    });
+    test("document.all.item(undefined)", "OK, <div id=undefined>", function () {
+      return document.all.item(undefined);
+    });
+    test("document.all(\"undefined\")", "OK, <div id=undefined>", function () {
+      return document.all("undefined");
+    });
+    test("document.all.item(\"undefined\")", "OK, <div id=undefined>", function () {
+      return document.all.item("undefined");
+    });
+  })();
+</script>
