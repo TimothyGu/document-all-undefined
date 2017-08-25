@@ -34,5 +34,11 @@
     test("document.all.item(\"undefined\")", "OK, <div id=undefined>", function () {
       return document.all.item("undefined");
     });
+    test("Function.prototype.call.call(document.all, undefined, \"undefined\")", "OK, <div id=undefined>", function () {
+      return Function.prototype.call.call(document.all, undefined, "undefined");
+    });
+    test("Function.prototype.call.call(document.all.item, undefined, \"undefined\")", "ERROR", function () {
+      return Function.prototype.call.call(document.all.item, undefined, "undefined");
+    });
   })();
 </script>
