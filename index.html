@@ -29,27 +29,39 @@
     // Chrome: OK, undefined
     // Edge:   OK, undefined
     // FF:     Throws
-    // Safari: OK, undefined
+    // Safari: OK, <div id=undefined>
     test("document.all.item()", "OK, null", function () {
       return document.all.item();
     });
     
-    // Spec:   OK, null
-    // Chrome: OK, <div id=undefined>
-    // Edge:   OK, <div id=undefined>
-    // FF:     OK, <div id=undefined>
-    // Safari: OK, undefined
+    // Spec:     OK, null
+    // Browsers: OK, <div id=undefined>
     test("document.all(undefined)", "OK, null", function () {
       return document.all(undefined);
     });
     
-    // Spec:   OK, null
-    // Chrome: OK, <div id=undefined>
-    // Edge:   OK, <div id=undefined>
-    // FF:     OK, <div id=undefined>
-    // Safari: OK, undefined
+    // Spec:     OK, null
+    // Browsers: OK, <div id=undefined>
     test("document.all.item(undefined)", "OK, null", function () {
       return document.all.item(undefined);
+    });
+    
+    // Spec:   OK, null
+    // Chrome: OK, undefined
+    // Edge:   OK, undefined
+    // FF:     OK, null
+    // Safari: OK, undefined
+    test("document.all(\"nonexistent\")", "OK, null", function () {
+      return document.all("nonexistent");
+    });
+    
+    // Spec:   OK, null
+    // Chrome: OK, undefined
+    // Edge:   OK, undefined
+    // FF:     OK, null
+    // Safari: OK, undefined
+    test("document.all.item(\"nonexistent\")", "OK, null", function () {
+      return document.all.item("nonexistent");
     });
     
     // All: OK, <div id=undefined>
